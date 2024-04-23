@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "hello-app"
+  namespace: default
+  labels:
+    app: "hello-app"
+spec:
+  containers:
+    - name: hello-app
+      image: "matiruizsh1/hello-app:v0.1"
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
+      env:
+        - name: HELLO
+          value: WORLD
+      ports:
+        - containerPort: 3000
+          name: hello-app
+  restartPolicy: Always
+---
+
